@@ -1,6 +1,5 @@
-import express, { Request, Response } from 'express';
+import { Request, Response } from 'express';
 import models from '../models/UserModel';
-const app = express();
 
 class RoutesFunctions {
 
