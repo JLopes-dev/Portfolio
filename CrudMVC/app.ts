@@ -7,5 +7,4 @@ if(process.env.DB_PROD === 'prod') config({path:'./config/.env.prod'})
 
 mongo.mongoConnect(process.env.DB as string).then(() => {
     routesHandler.start()
-})
-// 
+}) 

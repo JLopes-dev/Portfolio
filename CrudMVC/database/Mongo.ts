@@ -8,5 +8,3 @@ class Mongo {
 }
 const mongo = new Mongo()
 export default mongo
-//
-//
