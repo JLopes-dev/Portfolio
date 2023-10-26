@@ -3,6 +3,10 @@ import { model, Schema } from "mongoose";
 class Models {
 
     public User = model('users', new Schema({
+        _id: {
+            type: String,
+            require: true
+        },
         userName: {
             type: String,
             require: true

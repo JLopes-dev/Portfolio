@@ -12,7 +12,7 @@ class RoutesFunctions {
     }
 
     public async getFunction(req: Request, res: Response) {
-        const data = await models.User.findOne({ userName: req.params.userName })
+        const data = await models.User.findOne({ userName: req.params.userName, email: req })
         res.send({ message: data })
     }
 
