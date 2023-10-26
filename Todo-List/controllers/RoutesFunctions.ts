@@ -9,7 +9,7 @@ class RoutesFunctions {
     public async createQuest(req: Request, res: Response) {
         const { tarefa, descricao } = req.body;
         await Quest.create({ tarefa, descricao })
-        res.json({ message: "dados criados com sucesso!" })
+        res.redirect('/')
     }
     public async showQuest(req: Request, res: Response) {
         const show = await Quest.findAll({ raw: true })

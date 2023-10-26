@@ -1,6 +1,6 @@
 import express from 'express'
 import routesFunctions from '../controllers/RoutesFunctions'
-import serverConfigs from '../controllers/ServerConfigs'
+import startDatabase from '../database/StartDatabase'
 
 const router = express.Router()
 const app = express()
@@ -12,19 +12,24 @@ class TodoRoutes {
         app.use(express.urlencoded({
             extended: true
         }))
+        app.use(express.static('public'))
         app.use(router)
         app.set("view engine", "ejs")
     }
 
     private crudRoutes() {
         router.get('/', routesFunctions.renderHome)
-        router.post('/createtask', routesFunctions.createQuest)
-        router.get('/showquest', routesFunctions.showQuest)
+        router.post('/createtask',routesFunctions.createQuest)
+        router.get('/showtask', routesFunctions.showQuest)
     }
     public startRoutes() {
-        serverConfigs.configStart()
+        startDatabase.configStart()
        this.routesConfig()
        this.crudRoutes()
+       app.listen(3001, () => {
+        console.log("Server Rodando!");
+        
+       })
     }
 }
 const todoRoutes = new TodoRoutes();

@@ -8,21 +8,22 @@
 </head>
 <body>
     <div class="container">
-        <h1>Todo-List</h1>
-        <form action="/createtask" method="post">
-            <div>
-                <label>Tarefa</label>
-                <input type="text" placeholder="Digite o nome da Tarefa" name="tarefa">
+        <form id="form" action="/createtask" method="post">
+            <h1 class="center">Todo-List</h1>
+            <div class="center">
+                <h2>Tarefa</h2>
+                <input class="inputs" type="text" placeholder="Digite o nome da Tarefa" name="tarefa">
             </div>
-            <div>
-                <label>Descrição</label>
-                <input type="text" placeholder="Digite o nome da Tarefa" name="descricao">
+            <div class="center">
+                <h2>Descrição</h2>
+                <input class="inputs" type="text" placeholder="Digite o nome da Tarefa" name="descricao">
             </div>
-            <div>
-                <input type="submit" value="Cadastrar">
+            <div class="center">
+                <button id="buttonOne">Cadastrar</button>
+                <button id="buttonTwo"><a href="/showtask">Mostrar Tarefas</a></button>
             </div>
         </form>
-        <a href="/showquest">Mostrar Tarefas</a>
+        
     </div>
 </body>
 </html>
