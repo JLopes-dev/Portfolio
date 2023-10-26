@@ -10,6 +10,7 @@ class RoutesHandler {
         router.get('/showUser/:userName', routesFunctions.getFunction)
         router.put('/updateUser/:userName', routesFunctions.updateFunction)
         router.delete('/deleteUser/:userName', routesFunctions.deleteFunction)
+        router.post('/auth', routesFunctions.auth)
         app.use(router)
         app.use((req: Request, res: Response) => {
             res.send({ err: 'Rota não existente!' })
