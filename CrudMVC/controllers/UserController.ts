@@ -1,34 +1,37 @@
 import { Request, Response } from 'express';
-import models from '../models/UserModel';
-
+import User from '../models/UserModel';
 class RoutesFunctions {
 
-    public async postFunction(req: Request, res: Response) {
+    public async createUser(req: Request, res: Response) {
         const { userName, email, password } = req.body;
-        await models.User.create({
+        User.create({ 
             userName, email, password
-        })
-        res.send({ message: 'Dados Criados!' })
+         })
+        res.status(201).send({ message: 'Data created!' })
     }
 
-    public async getFunction(req: Request, res: Response) {
-        const data = await models.User.findOne({ userName: req.params.userName })
-        res.send({ message: data })
+    public async showOneUser(req: Request, res: Response) {
+        const data = await User.findOne({ userName: req.params.userName })
+        res.status(200).send({ message: data })
+    }
+    public async showAllUsers(req: Request, res: Response) {
+        const data = await User.find()
+        res.status(200).send({ message: data })
     }
 
-    public async updateFunction(req: Request, res: Response) {
-        const data = await models.User.findOne({ userName: req.params.userName })
-        if(!data) return res.send({ message: 'Esse usuário não existe!' })
-        const { email, password } = req.body; 
-        await models.User.findOneAndUpdate({ userName: req.params.userName }, { email, password })
-        res.send({ message: 'Dados Atualizados!' })
+    public async updateUser(req: Request, res: Response) {
+        const { username, password, newPassword } = req.body; 
+        const data = await User.findOneAndUpdate({ username, password }, { password: newPassword })
+        if(!data) return res.status(404).send({ message: 'The user does not exist!' })
+        res.status(200).send({ message: 'Data updated!' })
     }
 
-    public async deleteFunction(req: Request, res: Response) {
-        const data = await models.User.findOne({ userName: req.params.userName })
-        if(!data) return res.send({ message: 'Esse usuário não existe!' })
-        await models.User.deleteOne({ userName: req.params.userName })
-        res.send({ message: 'Dados Deletados!' })
+    public async deleteOneUser(req: Request, res: Response) {
+        const { email, password } = req.body;
+        const data = await User.findOneAndDelete({ email, password })
+        if(!data) return res.status(404).send({ message: 'The user does not exist!' })
+        res.status(200).send({ message: 'Data deleted' })
+        
     }
 }
 
