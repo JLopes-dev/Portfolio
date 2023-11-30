@@ -1,2 +1,2 @@
-# PortfolioNodeJs
-Repositório com objetivo de mostrar projetos em Node.js
+# Portfolio
+Repositório com objetivo de mostrar projetos feitos ao longo do meu aprendizado em programação.

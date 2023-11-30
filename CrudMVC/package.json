@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "nodemon app.ts",
+    "prod": "DB_PROD=prod nodemon app.ts",
     "dev": "DB_DEV=dev nodemon app.ts"
   },
   "keywords": [],
